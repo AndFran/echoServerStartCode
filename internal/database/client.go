@@ -12,7 +12,6 @@ type DatabaseClient interface {
 	Ready() bool
 }
 
-// Client -> wrap a gorm instance and supply an interface DatabaseClient
 type Client struct {
 	DB *gorm.DB
 }
@@ -26,7 +25,6 @@ func (c Client) Ready() bool {
 	return ready == "1"
 }
 
-// return an interfac
 func NewDatabaseClient() (DatabaseClient, error) {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=%s",
 		"localhost", "postgres", "Rr1234!!", "wisdom", 5432, "disable")
